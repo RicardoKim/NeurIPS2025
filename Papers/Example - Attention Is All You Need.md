@@ -1,14 +1,20 @@
 ---
-tags: [paper, nlp, transformer]
+tags:
+  - paper
+  - nlp
+  - transformer
 status: 🟩 Done
-authors: [Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.]
+authors:
+  - Ashish Vaswani
+  - Noam Shazeer
+  - Niki Parmar
 conference: NeurIPS
 year: 2017
 link: https://arxiv.org/abs/1706.03762
 priority: ⭐⭐⭐⭐⭐
 created: 2025-12-29
 ---
-
+****
 # Attention Is All You Need
 
 > [!abstract] Abstract
