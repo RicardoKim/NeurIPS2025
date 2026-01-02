@@ -8,21 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2364bbb22a1e0f47",
+            "id": "2d26668aba5a21c6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Papers/Example - Attention Is All You Need.md",
+                "file": "Papers/The emergence of sparse attention - impact of data distribution and benefits of repetition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Example - Attention Is All You Need"
+              "title": "The emergence of sparse attention - impact of data distribution and benefits of repetition"
             }
           },
           {
-            "id": "2d26668aba5a21c6",
+            "id": "f73a073c4d55c79c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -196,12 +196,13 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "2d26668aba5a21c6",
+  "active": "f73a073c4d55c79c",
   "lastOpenFiles": [
-    "URL.md",
+    "Papers/RankRAG - Unifying Context Ranking withRetrieval-Augmented Generation in LLMs.md",
     "Papers/The emergence of sparse attention - impact of data distribution and benefits of repetition.md",
-    "Papers/Example - Attention Is All You Need.md",
     "index.md",
+    "URL.md",
+    "Papers/Example - Attention Is All You Need.md",
     "Templates/Paper Template.md",
     "README.md",
     "Untitled"
