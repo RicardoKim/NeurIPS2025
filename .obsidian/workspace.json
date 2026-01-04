@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Papers/The emergence of sparse attention - impact of data distribution and benefits of repetition.md",
+                "file": "Papers/RankRAG - Unifying Context Ranking withRetrieval-Augmented Generation in LLMs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The emergence of sparse attention - impact of data distribution and benefits of repetition"
+              "title": "RankRAG - Unifying Context Ranking withRetrieval-Augmented Generation in LLMs"
             }
           }
         ]
@@ -181,8 +181,8 @@
   },
   "active": "2d26668aba5a21c6",
   "lastOpenFiles": [
-    "Papers/RankRAG - Unifying Context Ranking withRetrieval-Augmented Generation in LLMs.md",
     "Papers/The emergence of sparse attention - impact of data distribution and benefits of repetition.md",
+    "Papers/RankRAG - Unifying Context Ranking withRetrieval-Augmented Generation in LLMs.md",
     "index.md",
     "URL.md",
     "Papers/Example - Attention Is All You Need.md",

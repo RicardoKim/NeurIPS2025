@@ -14,7 +14,7 @@ authors:
   - Bryan Catanzaro
 conference: NeurIPS
 year: 2024
-link: https://openreview.net/forum?id=S1fc92uemC&referrer=%5Bthe%20profile%20of%20Jiaxuan%20You%5D(%2Fprofile%3Fid%3D~Jiaxuan_You2)
+link: https://openreview.net/forum?id=S1fc92uemC
 priority: ⭐⭐⭐
 created: 2026-01-02
 ---
@@ -28,34 +28,67 @@ created: 2026-01-02
 ---
 
 ## 🔑 Key Contributions
-- 
-- 
-- 
+- One decoder-only LLM handles _retrieve → rerank → generate_ without a separate cross-encoder reranker.
+- Ranking is cast into a QA-like instruction format (True/False relevance, or “which passages are relevant”) to encourage transfer to generation.
+- strong reranking recall with 5k-50k ranking pairs, reporting competitiveness vs rerankers trained on much more ranking data.
 
 ## 📝 Summary
 > [!summary] TL;DR
-> One sentence summary of the main idea.
+> Treat ranking as an instruction-following subtask inside RAG fine-tuning (QA-shaped prompts), then use the same model to rerank retrieved passages before generating, which yields consistent gains, especially when initial retrieval is noisy.
 
 ### Background & Motivation
-- What problem are they solving?
+- Standard RAG often retrieves many chunks (high recall) but LLMs degrade when forced to read too much
+	- using a small top-_k_ helps generation but can miss relevant evidence.
+- A common fix is an extra reranker model (cross-encoder), but this adds complexity and may generalize worse than the LLM itself.
+- Core hypothesis: an instruction-tuned LLM’s ability to use evidence and its ability to judge relevance can be trained to mutually reinforce when framed in an instruction format
 
 ### Methodology
-- How did they solve it?
+Two stage post-training (maybe we can replicate this with unsloth?)
+
+**Stage 1**: SFT for instruction following
+- self-explanatory (most models usually do this anyways)
+
+**Stage 2**: instruction-tuning for ranking + generation
+	(1) Stage-I SFT data (to preserve instruction-following).
+	(2) Context-rich QA datasets (gold context + answer).
+	(3) Retrieval-augmented QA: mix gold context with BM25 top-retrieved contexts (total 5 passages) to train robustness to irrelevant context
+	(4) Context ranking
+	(5) Retrieval-augmented ranking (given 5 passages, explicitly identify which are relevant)
+
+
+**Inference Pipeline**
+Retrieve -> Rerank -> Generate
+1. Retriever first pulls top-N passages
+2. RankRAG computes a relevance score using the probability of generating "True" (for relevance)
+	1. Reranking generates ~1 token per passage
+3. Keep top-k then generate using the retrieved passages
 
 ### Experiments & Results
-- What did they find?
+- Benchmarks: Open-domain QA (NQ, TriviaQA, PopQA, HotpotQA, 2WikimQA), fact verification (FEVER), conversational QA (Doc2Dial, TopiOCQA, INSCIT).
+- Backbone: Llama 3 8B, 70B
+
+**Results**
+- RankRAG improves over ChatQA-1.5 across all benchmarks
+- Authors highlight larger gains on harder datasets like PopQA and 2WikimQA (>10%)
+
 
 ---
 
 ## 💭 Critical Analysis / Thoughts
 > [!quote] My Take
-> Strengths, weaknesses, and potential future work.
+> RankRAG is not bad (it simplifies RAG and yields consistent gains) but it is fundamentally bounded by retriever recall and heuristic ranking labels. Lot's of future work remain, especially in uncertainty-aware relevance modeling (when no relevant passages are returned).
 
 - **Pros**:
+	- Using a simple, unified reranker model simplifies LLM deployment 
+	- Maybe we can use "judge LLMs" to further improve the RAG method?
+	- Better token efficiency than classic reranker training
 - **Cons**:
+	- No public GitHub repository (not very reproducible)
+	- Evaluation focuses on common RAG QA suites; less evidence on open-ended generation quality dimensions
+	- Reranking helps with noisy retrieval, but the method still assumes the answer is present in the candidate pool
 
 ---
 
 ## 🔗 References & Links
-- [Link to Paper](URL)
-- [Code Repository](URL)
+- [Link to Paper](https://openreview.net/forum?id=S1fc92uemC)
+- [Code Repository] 없음
