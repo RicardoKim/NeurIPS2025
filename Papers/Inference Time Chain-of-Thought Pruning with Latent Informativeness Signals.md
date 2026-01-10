@@ -73,18 +73,18 @@ created: 2026-01-10
 ## 💭 Critical Analysis / Thoughts
 
 > [!quote] My Take
-> Runtime reasoning control using information-theoretic signals, but the pruning schedule and scoring stability are still fragile 
+> Runtime reasoning control using information-theoretic signals, but the pruning schedule and scoring stability are still fragile
+
 - **Pros**:
-	- Training-Free and uses token-level distribution signals
-	- Significant compute and memory savings
+  - Training-Free and uses token-level distribution signals
+  - Significant compute and memory savings
 - **Cons**:
-	- Over pruning problem
-	- Scoring function requires hyper-parameter tuning
-	- Can the quality of a reasoning trajectory be reliably inferred early enough to justify greedy pruning?
+  - Over pruning problem
+  - Scoring function requires hyper-parameter tuning
+  - Can the quality of a reasoning trajectory be reliably inferred early enough to justify greedy pruning?
 
 ---
 
 ## 🔗 References & Links
 
 - https://openreview.net/pdf/056c8a1a9a5724fb64de40cc4374d2740f3871c5.pdf
-
