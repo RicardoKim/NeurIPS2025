@@ -1,10 +1,12 @@
 ---
-tags: [paper, research]
-status: 🟧 To Read  # 🟥 Not Read, 🟧 Reading, 🟩 Done
-authors: 
-conference: 
-year: 
-link: 
+tags:
+  - paper
+  - research
+status: 🟩 Done
+authors:
+conference: ICLR
+year: 2025
+link: https://arxiv.org/pdf/2410.11414
 priority: ⭐⭐⭐
 created: 2026-01-17
 ---
